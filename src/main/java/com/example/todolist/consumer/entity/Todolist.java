@@ -1,10 +1,8 @@
 package com.example.todolist.consumer.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -12,10 +10,13 @@ import java.io.Serializable;
 
 @Data
 @Entity
+@Builder
 @NoArgsConstructor
-@ToString(of = {"name"})
-@EqualsAndHashCode(of = {"name"})
+@AllArgsConstructor
+@ToString
 @Table(name = "todolist")
+@EqualsAndHashCode(of = {"name"})
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
 public class Todolist implements Serializable {
 
@@ -23,8 +24,13 @@ public class Todolist implements Serializable {
     @GeneratedValue
     Long id;
 
-    @NotEmpty(message = "Ne doti pas être Null")
+    @NotEmpty(message = "Ne doit pas être Null")
     @Column(nullable = false, unique = true)
     String name;
+
+    @NotEmpty(message = "Ne doit pas être Null")
+    @Column(nullable = false)
+    String surName;
+
 
 }

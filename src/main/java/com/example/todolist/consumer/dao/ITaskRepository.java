@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
-public interface TaskRepository extends JpaRepository<Task, Long> {
+public interface ITaskRepository extends JpaRepository<Task, Long> {
 
 
     Optional<Task> findByTitle(String title);

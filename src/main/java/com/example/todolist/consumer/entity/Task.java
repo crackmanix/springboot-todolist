@@ -2,8 +2,8 @@ package com.example.todolist.consumer.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.NotFound;
 
 import javax.persistence.*;
@@ -13,8 +13,11 @@ import java.io.Serializable;
 
 @Data
 @Entity
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "Task")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
 public class Task implements Serializable {
 

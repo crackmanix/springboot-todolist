@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ehcache>
+
+<!--    <diskStore path="java.io.tmpdir"/>-->
+
+    <defaultCache maxEntriesLocalHeap="2000"
+                  eternal="false"
+                  timeToLiveSeconds="60"
+                  timeToIdleSeconds="60"
+                  copyOnRead="true"
+                  copyOnWrite="true"
+                  memoryStoreEvictionPolicy="LFU">
+        <cacheEventListenerFactory listenFor="local"
+                                   class="com.example.todolist.infra.cache.CustomCacheEventListenerFactory"/>
+    </defaultCache>
+
+    <!-- todoList cache -->
+    <cache name="todolistCache"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="60"
+           timeToIdleSeconds="60"
+           copyOnRead="true"
+           copyOnWrite="true"
+           memoryStoreEvictionPolicy="LFU">
+        <cacheEventListenerFactory listenFor="local"
+                                   class="com.example.todolist.infra.cache.CustomCacheEventListenerFactory"/>
+    </cache>
+
+    <!-- task cache -->
+    <cache name="taskCache"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="60"
+           timeToIdleSeconds="60"
+           copyOnRead="true"
+           copyOnWrite="true"
+           memoryStoreEvictionPolicy="LFU">
+        <cacheEventListenerFactory listenFor="local"
+                                   class="com.example.todolist.infra.cache.CustomCacheEventListenerFactory"/>
+    </cache>
+
+
+</ehcache>

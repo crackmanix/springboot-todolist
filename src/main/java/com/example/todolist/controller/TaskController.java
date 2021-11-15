@@ -5,6 +5,8 @@ import com.example.todolist.infra.exception.TaskNotFoundException;
 import com.example.todolist.service.ITaskService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +17,18 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping(value = "tasks")
-public class TaskController {
+public class TaskController implements HealthIndicator {
 
     @Autowired
     ITaskService taskService;
 
-    @GetMapping(path = "/{title}")
+    @Override
+    public Health health(){
+        return Health.up().build();
+    }
+
+    @GetMapping(path = "/{title}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Task> getTaskByTitle(@PathVariable String title) throws TaskNotFoundException {
 
         log.info("Recherche d'une Task avec le Title:{}", title);

@@ -11,6 +11,8 @@ public interface ITaskService {
 
     List<Task> getTasksByTodolistName(String name);
 
+    long countAll();
+
 
 
 }

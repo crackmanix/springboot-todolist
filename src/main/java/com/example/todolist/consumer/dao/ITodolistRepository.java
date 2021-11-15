@@ -10,7 +10,9 @@ import java.util.Optional;
 
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
-public interface TodolistRepository extends JpaRepository<Todolist, Long> {
+public interface ITodolistRepository extends JpaRepository<Todolist, Long> {
 
     Optional<Todolist> findByName(String name);
+
+    boolean existsByName(String name);
 }

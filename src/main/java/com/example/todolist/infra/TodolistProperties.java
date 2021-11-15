@@ -15,6 +15,13 @@ import org.springframework.stereotype.Component;
 public class TodolistProperties {
 
     String name;
+
     String color;
+
+    String myQueue;
+
+    String myOtherQueue;
+
+    String myTopic;
 
 }
